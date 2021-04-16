@@ -3,7 +3,14 @@ from collections import defaultdict
 import sys
 import re
 
-# _DELIMITERS = [' ', ',', '.']
+_DELIMITERS = [
+    ' ',
+    ',',
+    '.',
+    '\n',
+    '\r',
+    '\t',
+]
 
 
 def main():
@@ -18,8 +25,8 @@ def main():
         word = ''
         word_counter = defaultdict(int)
         while str_a:
-            # if str_a not in _DELIMITERS:
-            if re.fullmatch(r'\w|-', str_a):
+            # if re.fullmatch(r'\w|-', str_a):
+            if str_a not in _DELIMITERS:
                 word += str_a
             else:
                 if re.fullmatch(r'(?:\w+-)*\w+', word):
