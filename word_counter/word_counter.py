@@ -31,6 +31,7 @@ def main():
         # выводим i самых частых слова из словаря
 
         if 0:
+            # https://stackoverflow.com/questions/11902665/top-values-from-dictionary
             for i in range(20):
                 keymax = max(word_counter, key=word_counter.get)
                 print(keymax, word_counter[keymax])
