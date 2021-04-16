@@ -1,5 +1,9 @@
+from collections import defaultdict
+
 import sys
 import re
+
+# _DELIMITERS = [' ', ',', '.']
 
 
 def main():
@@ -12,20 +16,21 @@ def main():
 
         str_a = f.read(1).lower()
         word = ''
-        word_counter = {}
+        word_counter = defaultdict(int)
         while str_a:
+            # if str_a not in _DELIMITERS:
             if re.fullmatch(r'\w|-', str_a):
                 word += str_a
             else:
                 if re.fullmatch(r'(?:\w+-)*\w+', word):
-                    word_counter.setdefault(word, 0)
+                    # word_counter.setdefault(word, 0)
                     word_counter[word] += 1
                 word = ''
             str_a = f.read(1).lower()
 
         # выводим i самых частых слова из словаря
 
-        for i in range(3):
+        for i in range(20):
             keymax = max(word_counter, key=word_counter.get)
             print(keymax, word_counter[keymax])
             word_counter.pop(keymax)
