@@ -30,10 +30,17 @@ def main():
 
         # выводим i самых частых слова из словаря
 
+        if 0:
+            for i in range(20):
+                keymax = max(word_counter, key=word_counter.get)
+                print(keymax, word_counter[keymax])
+                word_counter.pop(keymax)
+
+        sorted_counter = sorted([
+            (k, word_counter[k]) for k in word_counter
+        ], key=lambda x: x[1], reverse=True)
         for i in range(20):
-            keymax = max(word_counter, key=word_counter.get)
-            print(keymax, word_counter[keymax])
-            word_counter.pop(keymax)
+            print(sorted_counter[i])
 
 
 if __name__ == '__main__':
