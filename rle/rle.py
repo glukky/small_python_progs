@@ -15,7 +15,8 @@ def mystr(symbol, count):
         number = count % 10
         count = count // 10
         list_num.append(_DIGITS[number])
-    return symbol + ''.join(list_num[::-1]) 
+    # return symbol + ''.join(list_num[::-1]) 
+    return symbol + ''.join(list_num) 
 
 
 def rle(input_str):
@@ -35,8 +36,6 @@ def rle(input_str):
     chunk = mystr(symbol, count)
     # print('    ', chunk)
     output_str += chunk
-    
-    # TODO(glukky): fixme
     return output_str
 
 
