@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 from geopy import distance as gd
 
 
-_DISTANCE_TRESHOLD = 20
+_DISTANCE_TRESHOLD = 40
 
 _NS = 'http://www.topografix.com/GPX/1/1'
 

@@ -32,17 +32,19 @@ def main():
         print("Sorry, you're trying to destroy your data, please remove it first. Output file must NOT exist.")
         sys.exit(2)
 
+    ns = {'g': _NS}
+
+    print("Loading `{}`...".format(main_file_name))
     main_tree = ET.parse(main_file_name)
     main_root = main_tree.getroot()
-    main_trk = main_root.find('g:trk')
+    main_trk = main_root.find('g:trk', ns)
 
     # trkseg_elem - родительские элементы для точек разделённых участков трека
     # т.е. перебираем все ветви <trgseg>...</trkseg>
 
-    ns = {'g': _NS}
-
     for track_index in range(1, len(sys.argv) - 1):
         merged_file_name = sys.argv[track_index]
+        print("Merging `{}`...".format(merged_file_name))
 
         merged_tree = ET.parse(merged_file_name)
         merged_root = merged_tree.getroot()
@@ -51,7 +53,9 @@ def main():
             main_trk.append(trkseg_elem)
 
     # Записываем новый xml-документ на основе полученного дерева
+    print("Writing `{}`...".format(output_file_name))
     main_tree.write(output_file_name, encoding="UTF-8")
+    print("All done")
 
 
 if __name__ == '__main__':
